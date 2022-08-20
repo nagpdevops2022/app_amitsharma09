@@ -30,21 +30,16 @@ pipeline {
            -Dsonar.css.node=. \
            -Dsonar.host.url=http://localhost:9000 \
            -Dsonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"
-          // bat "${scannerHome}/bin/sonar-scanner begin -X"
-          // bat '${scannerHome}/bin/sonar-scanner -D"sonar.projectKey=sonar-amitsharma09" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"'
         }
       }
     }
-    // stage('TestCase Execution') {
-    //     steps{
-    //       bat 'npm test'
-    //     }
-    // }
-    // stage('Stop Sonarqube Analysis') {
-    //     steps{
-    //       echo "Stopping Sonarqube Analysis."
-    //       bat "${scannerHome}/bin/sonar-scanner end"
-    //     }
-    // }
+    stage('TestCase Execution') {
+      when {
+              branch 'master'
+            }
+        steps{
+          bat 'npm test'
+        }
+    }
   }
 }
