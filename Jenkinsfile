@@ -13,7 +13,7 @@ pipeline {
 
     stage('Test case execution') {
       when {
-              branch 'master'
+              branch 'develop'
             }
       steps {
         bat 'npm test'
