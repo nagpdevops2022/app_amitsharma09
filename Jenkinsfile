@@ -29,16 +29,16 @@ pipeline {
         }
       }
     }
-    stage('TestCase Execution') {
-        steps{
-          bat 'npm test'
-        }
-    }
-    stage('Stop Sonarqube Analysis') {
-        steps{
-          echo "Stopping Sonarqube Analysis."
-          bat "${scannerHome}/bin/sonar-scanner end"
-        }
-    }
+    // stage('TestCase Execution') {
+    //     steps{
+    //       bat 'npm test'
+    //     }
+    // }
+    // stage('Stop Sonarqube Analysis') {
+    //     steps{
+    //       echo "Stopping Sonarqube Analysis."
+    //       bat "${scannerHome}/bin/sonar-scanner end"
+    //     }
+    // }
   }
 }
