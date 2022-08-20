@@ -24,7 +24,13 @@ pipeline {
       steps {
         echo "Starting Sonarqube Analysis."
         withSonarQubeEnv('Test_Sonar'){
-          bat "${scannerHome}/bin/sonar-scanner begin -X"
+          bat "${scannerHome}/bin/sonar-scanner \
+           -Dsonar.projectKey=sonar-amitsharma09 \
+           -Dsonar.sources=. \
+           -Dsonar.css.node=. \
+           -Dsonar.host.url=http://localhost:9000 \
+           -Dsonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"
+          // bat "${scannerHome}/bin/sonar-scanner begin -X"
           // bat '${scannerHome}/bin/sonar-scanner -D"sonar.projectKey=sonar-amitsharma09" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"'
         }
       }
