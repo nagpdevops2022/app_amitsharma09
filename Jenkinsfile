@@ -24,8 +24,8 @@ pipeline {
       steps {
         echo "Starting Sonarqube Analysis."
         withSonarQubeEnv('Test_Sonar'){
-          // bat "${scannerHome}/bin/sonar-scanner begin /k:\"sonar-amitsharma09\" /d:sonar.verbose=true -d:sonar.cs.xunit.reportsPath='Tests/TestResults/sonar-amitsharma09TestFileReport.xml'"
-          bat '${scannerHome}/bin/sonar-scanner -D"sonar.projectKey=sonar-amitsharma09" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"'
+          bat "${scannerHome}/bin/sonar-scanner begin -X"
+          // bat '${scannerHome}/bin/sonar-scanner -D"sonar.projectKey=sonar-amitsharma09" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"'
         }
       }
     }
