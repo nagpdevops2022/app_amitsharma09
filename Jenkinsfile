@@ -7,13 +7,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm i'
+        bat 'npm i'
       }
     }
 
     stage('Test case execution') {
       steps {
-        sh 'npm test'
+        bat 'npm test'
       }
     }
   }
