@@ -24,7 +24,8 @@ pipeline {
       steps {
         echo "Starting Sonarqube Analysis."
         withSonarQubeEnv('Test_Sonar'){
-          bat "${scannerHome}/bin/sonar-scanner begin /k:\"sonar-amitsharma09\" /d:sonar.verbose=true -d:sonar.cs.xunit.reportsPath='Tests/TestResults/sonar-amitsharma09TestFileReport.xml'"
+          // bat "${scannerHome}/bin/sonar-scanner begin /k:\"sonar-amitsharma09\" /d:sonar.verbose=true -d:sonar.cs.xunit.reportsPath='Tests/TestResults/sonar-amitsharma09TestFileReport.xml'"
+          bat "${scannerHome}/bin/sonar-scanner begin"
         }
       }
     }
