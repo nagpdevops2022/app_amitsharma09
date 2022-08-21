@@ -35,14 +35,6 @@ pipeline {
         }
       }
     }
-    stage('TestCase Execution') {
-      when {
-              branch 'master'
-            }
-        steps{
-          bat 'npm test'
-        }
-    }
     stage('Kubernetes Execution') {
       steps {
         // bat 'gcloud auth login'
