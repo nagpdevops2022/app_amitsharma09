@@ -24,8 +24,8 @@ pipeline {
       steps {
         echo "Starting Sonarqube Analysis."
         withSonarQubeEnv('Test_Sonar'){
-          bat "${scannerHome}/bin/sonar-scanner \
-           -Dsonar.projectKey=sonar-amitsharma09"
+          bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-amitsharma09"
+          
           // bat "${scannerHome}/bin/sonar-scanner \
           //  -Dsonar.projectKey=sonar-amitsharma09 \
           //  -Dsonar.sources=. \
