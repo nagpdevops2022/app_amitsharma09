@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Kubernetes Execution') {
       steps {
-        bat 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project quick-doodad-360010'
+        // bat 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project quick-doodad-360010'
         // bat 'whoami'
         bat 'kubectl apply -f K8s/Deployment.yaml'
       }
