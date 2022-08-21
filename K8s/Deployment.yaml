@@ -27,7 +27,7 @@ type: Opaque
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app-amitsharma09-develop-deployment
+  name: node-app-amitsharma09-master-deployment
   namespace: kubernetes-cluster-amitsharma09
   labels:
     app: node-app-amitsharma09
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: node-app-amitsharma09
-          image: nagpdevops/i-amitsharma09-develop:latest
+          image: nagpdevops/i-amitsharma09-master:latest
           ports:
             - name: http
               containerPort: 7100
