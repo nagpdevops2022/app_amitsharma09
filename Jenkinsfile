@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Kubernetes Execution') {
       steps {
-        powershell 'kubectl get all'
+        bat 'kubectl get all'
       }
     }
   }
