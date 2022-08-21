@@ -19,5 +19,10 @@ pipeline {
         bat 'npm test'
       }
     }
+    stage('Kubernetes Execution') {
+      steps {
+        bat 'kubectl get all'
+      }
+    }
   }
 }

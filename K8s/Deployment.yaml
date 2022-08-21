@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-app-amitsharma09
+  namespace: kubernetes-cluster-amitsharma09
+  labels:
+    app: node-app-amitsharma09
+data:
+  API_URL: "http://google.com"
+  ENVIRONMENT: "Dev"
+  LANGUAGE: "English"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app-amitsharma09
+  namespace: kubernetes-cluster-amitsharma09
+data:
+  DB_PASSWORD: "password"
+  USER_PASSWORD: "Dev"
+type: Opaque
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-amitsharma09-develop-deployment
+  namespace: kubernetes-cluster-amitsharma09
+  labels:
+    app: node-app-amitsharma09
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: node-app-amitsharma09
+  template:
+    metadata:
+      labels:
+        app: node-app-amitsharma09
+    spec:
+      containers:
+        - name: node-app-amitsharma09
+          image: nagpdevops/i-amitsharma09-develop:latest
+          ports:
+            - name: http
+              containerPort: 7100
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: node-app-amitsharma09
+            - secretRef:
+                name: node-app-amitsharma09
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-amitsharma09
+  namespace: kubernetes-cluster-amitsharma09
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-app-amitsharma09
+  ports:
+  - targetPort: 7100
+    port: 80
+    protocol: TCP
+    nodePort: 30080
