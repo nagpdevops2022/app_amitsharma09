@@ -19,7 +19,7 @@ metadata:
   namespace: kubernetes-cluster-amitsharma09
 data:
   DB_PASSWORD: "password"
-  USER_PASSWORD: "Dev"
+  USER_PASSWORD: "cGFzc3dvcmQ="
 type: Opaque
 
 ---
