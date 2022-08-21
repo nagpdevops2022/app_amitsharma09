@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: node-app-amitsharma09
+  name: node-master-amitsharma09
   namespace: kubernetes-cluster-amitsharma09
   labels:
-    app: node-app-amitsharma09
+    app: node-master-amitsharma09
 data:
   API_URL: "http://google.com"
   ENVIRONMENT: "Dev"
@@ -15,7 +15,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: node-app-amitsharma09
+  name: node-master-amitsharma09
   namespace: kubernetes-cluster-amitsharma09
 data:
   DB_PASSWORD: "password"
@@ -27,22 +27,22 @@ type: Opaque
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app-amitsharma09-master-deployment
+  name: node-master-amitsharma09-deployment
   namespace: kubernetes-cluster-amitsharma09
   labels:
-    app: node-app-amitsharma09
+    app: node-master-amitsharma09
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: node-app-amitsharma09
+      app: node-master-amitsharma09
   template:
     metadata:
       labels:
-        app: node-app-amitsharma09
+        app: node-master-amitsharma09
     spec:
       containers:
-        - name: node-app-amitsharma09
+        - name: node-master-amitsharma09
           image: nagpdevops/i-amitsharma09-master:latest
           ports:
             - name: http
@@ -50,19 +50,19 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: node-app-amitsharma09
+                name: node-master-amitsharma09
             - secretRef:
-                name: node-app-amitsharma09
+                name: node-master-amitsharma09
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-app-amitsharma09
+  name: node-master-amitsharma09
   namespace: kubernetes-cluster-amitsharma09
 spec:
   type: LoadBalancer
   selector:
-    app: node-app-amitsharma09
+    app: node-master-amitsharma09
   ports:
   - targetPort: 7100
     port: 80
