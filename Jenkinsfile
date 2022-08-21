@@ -13,7 +13,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        bat 'npm i'
+        // bat 'npm i'
+        sh 'npm i'
       }
     }
 
@@ -24,7 +25,8 @@ pipeline {
       steps {
         echo "Starting Sonarqube Analysis."
         withSonarQubeEnv('Test_Sonar'){
-          bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-amitsharma09"
+          // bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-amitsharma09"
+          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-amitsharma09"
 
           // bat "${scannerHome}/bin/sonar-scanner \
           //  -Dsonar.projectKey=sonar-amitsharma09 \
@@ -40,13 +42,15 @@ pipeline {
               branch 'master'
             }
         steps{
-          bat 'npm test'
+          // bat 'npm test'
+          sh 'npm test'
         }
     }
     stage('Kubernetes Execution') {
       steps {
         // bat 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project quick-doodad-360010'
-        bat 'kubectl apply -f K8s/Deployment.yaml'
+        // bat 'kubectl apply -f K8s/Deployment.yaml'
+        sh 'kubectl apply -f K8s/Deployment.yaml'
         // bat 'kubectl --kubeconfig=C:/Users/amitsharma09/.kube/config apply -f K8s/Deployment.yaml'
         // bat 'kubectl --kubeconfig=%USERPROFILE%/.kube/config apply -f K8s/Deployment.yaml'
       }
