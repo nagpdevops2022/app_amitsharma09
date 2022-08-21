@@ -26,9 +26,12 @@ pipeline {
         withSonarQubeEnv('Test_Sonar'){
           bat "${scannerHome}/bin/sonar-scanner \
            -Dsonar.projectKey=sonar-amitsharma09 \
-           -Dsonar.sources=. \
-           -Dsonar.css.node=. \
            -Dsonar.host.url=http://localhost:9000"
+          // bat "${scannerHome}/bin/sonar-scanner \
+          //  -Dsonar.projectKey=sonar-amitsharma09 \
+          //  -Dsonar.sources=. \
+          //  -Dsonar.css.node=. \
+          //  -Dsonar.host.url=http://localhost:9000"
           //  -Dsonar.login=c54ad48e7bcee5e569e74e0702555e57f9bbb71a"
         }
       }
